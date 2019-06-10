@@ -1,0 +1,78 @@
+<!--pages/myself/myself.wxml-->
+<!-- 页头 -->
+<view class='yetou'>
+  <view class='img'>
+    <!-- 判断是否有用户信息 -->
+    <view wx:if="{{icon == []}}" class='tx'>
+      <image class='touxiang' src='http://www.wechat96.com/3.jpg'></image>
+      <!-- <image class='touxiang' src="{{icon}}"></image> -->
+    </view>
+    <view wx:else class='tx'>
+      <!-- <image class='touxiang' src='http://www.wechat96.com/background.jpg'></image> -->
+      <image class='touxiang' src="{{icon}}"></image>
+    </view>
+
+    <view class='mingzi'></view>
+    <!-- 判断是否有用户信息 -->
+    <view wx:if="{{name == []}}" class='name'>
+      <!-- <text class='wz'>{{name}}</text> -->
+      <button class='wz' size='mini' type='primary' open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo">点击授权</button>
+    </view>
+
+    <view wx:else class='name'>
+      <text class='wz'>{{name}}</text>
+      <!-- <button class='wz' size='mini' type='primary' open-type='getUserInfo' bindgetuserinfo="bindGetUserInfo">点击授权</button> -->
+    </view>
+
+  </view>
+</view>
+<!-- body -->
+<!-- 网站建设 -->
+<view class='shenti'>
+  <view class='hezi'>
+    <image class='my' src='../../image/my.png'></image>
+    <image class='webs' src='../../image/right.png'></image>
+    <view class='jianshe'>
+      <text bindtap='webUrl'>网站建设</text>
+    </view>
+  </view>
+</view>
+<!-- 关于我们 -->
+<view class='shenti'>
+  <view class='hezi'>
+    <image class='my' src='../../image/about.png'></image>
+    <image class='webs' src='../../image/right.png'></image>
+    <view class='jianshe1'>
+      <button class='style-butt' style='font-size:16px;background:#F8F8F8;' open-type='contact'>联系我们</button>
+    </view>
+  </view>
+</view>
+<!-- 设置 -->
+<view class='shenti'>
+  <view class='hezi'>
+    <image class='my' src='../../image/shezhi.png'></image>
+    <image class='webs' src='../../image/right.png'></image>
+    <view class='jianshe1'>
+      <button class='style-butt' style='font-size:16px;background:#F8F8F8;' open-type='openSetting'>授权设置</button>
+    </view>
+  </view>
+</view>
+
+<!-- 页尾 -->
+<view class='yewei'>
+  <view class='shangxian'>
+
+    <view class='tigong'>
+      <text>上线了</text>
+    </view>
+
+    <view class='tigong1'>
+      <text>wechat96.com</text>
+    </view>
+
+    <view class='tigong2'>
+      <text>提供技术支持</text>
+    </view>
+
+  </view>
+</view>

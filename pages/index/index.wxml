@@ -1,0 +1,177 @@
+<!--pages/myself/myself.wxml-->
+<!-- 页头 -->
+<view class='yetou'>
+  <view class='heads'>
+    <!-- 顶部 -->
+    <view class='title-top'>
+      <!-- 位置 -->
+      <view class='dlwz'>
+        <image class='dlwztp' src='../../image/dlwz.png'></image>
+        <text style='margin-left:5%;float:left;'>{{province}}</text>
+        <text style='margin-left:10%;float:left;'>{{location_city}}</text>
+      </view>
+      <!-- 分享图片 -->
+      <view bindtap='share_pic'>
+        <image class='fxpic' src='../../image/fxtp.png'></image>
+      </view>
+    </view>
+    <!-- pm2.0 -->
+    <view class='title-zj'>
+      <!-- 污染 -->
+      <view class='wuran'>
+        <text style='display:block;text-align:center;'>{{fl}}℃</text>
+        <text style='display:block;text-align:center;'>体感温度</text>
+      </view>
+      <!-- 时间 -->
+      <view class='uptime'>
+        <text style='display:block;text-align:center;'>{{get_time}}</text>
+      </view>
+    </view>
+    <!-- 温度详情 -->
+    <view class='title-xb'>
+      <!-- 温度 -->
+      <view class='wedu'>
+        <text class='sheshidu'>{{tmp}}℃</text>
+      </view>
+      <!-- 多云 -->
+      <view class='duyun'>
+        <text class='weather'>{{cond_txt}}</text>
+      </view>
+      <!-- 风向 -->
+      <view class='feng'>
+        <text class='wind'>{{wind_dir}} {{wind_sc}}级</text>
+      </view>
+      <!-- 空白 -->
+      <view class='kongbai'></view>
+      <!-- 提示语 -->
+      <view class='tishiyu'>
+        <text class='hint'>{{cue_word}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- boby -->
+<view class='bobys'>
+  <!-- 空白 -->
+  <view class='blanks'></view>
+  <!-- 天气预报 -->
+  <view class='freddy'>
+    <!-- 左边 -->
+    <view class='left_weather'>
+      <view class='today'>
+        <text class='tqyb'>今天</text>
+        <text class='tqyb'>{{tmp_max}}/{{tmp_min}}℃</text>
+      </view>
+      <view class='today'>
+        <text class='tqyb'>{{cond_txt_d}}</text>
+        <view class='tqyb'>
+          <image class='tqybs' src='{{cond_code_d}}'></image>
+        </view>
+      </view>
+    </view>
+    <!-- 右边 -->
+    <view class='right_weather'>
+      <view class='today'>
+        <text class='tqyb'>明天</text>
+        <text class='tqyb'>{{tmp_max_m}}/{{tmp_min_m}}℃</text>
+      </view>
+      <view class='today'>
+        <text class='tqyb'>{{cond_txt_d_m}}</text>
+        <view class='tqyb'>
+          <image class='tqybs' src='{{cond_code_d_m}}'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 空白 -->
+  <view class='blanks'></view>
+</view>
+<!-- 灰色 -->
+<view class='graycolor'></view>
+<!-- 空白 -->
+<view class='blanks'></view>
+<!-- 天气状况 -->
+<scroll-view class='weather_state' scroll-x="true">
+  <view class='y_items'>
+    <text>{{hum}}%</text>
+    <image style='width:60rpx;height:60rpx;' src='../../image/wetness.png'></image>
+    <text>相对湿度</text>
+  </view>
+  <view class='y_items'>
+    <text>{{cloud}}%</text>
+    <image style='width:60rpx;height:60rpx;' src='../../image/yun.png'></image>
+    <text>总云量</text>
+  </view>
+  <view class='y_items'>
+    <text>{{pres}}pa</text>
+    <image style='width:60rpx;height:60rpx;' src='../../image/pa.png'></image>
+    <text>大气压强</text>
+  </view>
+  <view class='y_items'>
+    <text>{{vis}}km</text>
+    <image style='width:60rpx;height:60rpx;' src='../../image/mor.png'></image>
+    <text>能见度</text>
+  </view>
+  <view class='y_items'>
+    <text>{{wind_deg}}</text>
+    <image style='width:60rpx;height:60rpx;' src='../../image/wdir.png'></image>
+    <text>风向角度</text>
+  </view>
+  <view class='y_items'>
+    <text>{{pcpn}}mm</text>
+    <image style='width:60rpx;height:60rpx;' src='../../image/water.png'></image>
+    <text>降水量</text>
+  </view>
+  <view class='y_items'>
+    <text>{{wind_spd}}km/h</text>
+    <image style='width:60rpx;height:60rpx;' src='../../image/wind.png'></image>
+    <text>今日风速</text>
+  </view>
+</scroll-view>
+<!-- 空白 -->
+<view class='blanks'></view>
+<!-- 灰色 -->
+<view class='graycolor'></view>
+<!-- 空白 -->
+<view class='blanks'></view>
+<!-- 三天天气状况 -->
+<view class='ThreeWeather'>
+<block wx:for="{{future}}" wx:key="index">
+  <view class='futrue-item'>
+    <text>{{item.date}}</text>
+    <text>日出{{item.sr}}</text>
+    <text>日落{{item.ss}}</text>
+    <text>{{item.cond_txt_d}}</text>
+    <image class='pic_img' src='{{item.cond_code_d}}'></image>
+    <text>{{item.tmp_max}}℃(最高)</text>
+    <text>{{item.tmp_min}}℃(最低)</text>
+    <image class='pic_img' src='{{item.cond_code_n}}'></image>
+    <text>{{item.cond_txt_n}}</text>
+    <text>月升{{item.mr}}</text>
+    <text>月落{{item.ms}}</text>
+    <text>{{item.wind_dir	}}</text>
+    <text>{{item.wind_sc}}级</text>
+  </view>
+</block>
+</view>
+<!-- 空白 -->
+<view class='blanks'></view>
+<!-- 灰色 -->
+<view class='graycolor'></view>
+<!-- 生活指数 -->
+<view class='indexlife'>
+<block wx:for="{{lifeindex}}" wx:key="index">
+<view class='zhishu' bindtap='click_button' data-name='{{item.txt}}'>
+  <image class='lifeindex_pic' src='{{item.type}}'></image>
+  <text>{{item.brf}}</text>
+  <text style='font-size:10px;color:gray;'>{{item.file}}</text>
+</view>
+</block>
+</view>
+<!-- 灰色 -->
+<view class='graycolor'></view>
+<!-- 页尾 -->
+<view class='yewei'>
+<text>-- 数据来源于和风天气 --</text>
+</view>
