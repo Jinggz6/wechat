@@ -4,7 +4,7 @@
   <view class='img'>
     <!-- 判断是否有用户信息 -->
     <view wx:if="{{icon == []}}" class='tx'>
-      <image class='touxiang' src='http://www.wechat96.com/3.jpg'></image>
+      <image class='touxiang' src='https://www.wechat96.com/3.jpg'></image>
       <!-- <image class='touxiang' src="{{icon}}"></image> -->
     </view>
     <view wx:else class='tx'>

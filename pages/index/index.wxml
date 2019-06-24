@@ -5,7 +5,7 @@
     <!-- 顶部 -->
     <view class='title-top'>
       <!-- 位置 -->
-      <view class='dlwz'>
+      <view class='dlwz' bindtap='skip_page'>
         <image class='dlwztp' src='../../image/dlwz.png'></image>
         <text style='margin-left:5%;float:left;'>{{province}}</text>
         <text style='margin-left:10%;float:left;'>{{location_city}}</text>

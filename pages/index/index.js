@@ -40,6 +40,7 @@ Page({
   onLoad: function(options) {
     this.weiZhi();
     this.getUserOpenId();
+    console.log(options);
   },
 
   /**
@@ -237,6 +238,13 @@ Page({
           });
         }
       }
+    })
+  },
+
+  // 搜索页面
+  skip_page: function(e) {
+    wx.switchTab({
+      url: '/pages/search/search',
     })
   },
 

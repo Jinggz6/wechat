@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/myself/myself"
+    "pages/myself/myself",
+    "pages/search/search"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -17,6 +18,12 @@
         "text": "首页",
         "iconPath":"image/indexs.png",
         "selectedIconPath":"image/index.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "image/hss.png",
+        "selectedIconPath": "image/lss.png"
       },
       {
         "pagePath": "pages/myself/myself",
