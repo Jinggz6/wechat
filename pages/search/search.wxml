@@ -2,28 +2,28 @@
 <view class='search'>
 <view class='sousuo'>
 <image style='width:38rpx;height:38rpx;' src='../../image/hss.png'></image>
-<input style='width:90%;' placeholder='请输入城市名，快速查询天气信息' confirm-type='search' bindconfirm="search_weather" />
+<input style='width:90%;' placeholder='请输入地址或城市名，查询天气信息' confirm-type='search' bindconfirm="search_weathers" />
 </view>
 </view>
-<view style='height:45rpx;'></view>
+<view style='height:45rpx;width:100%;'></view>
 <view class='dingwei'>
-<text>当前定位</text>
+<text>当前位置</text>
 </view>
 <view class='current_city'>
-<view class='chengshi' bindtap='search_weather'>北京市</view>
+<view class='chengshi' data-name='{{city}}' bindtap='search_weather'>{{city}}</view>
 </view>
-<view style='height:45rpx;'></view>
+<view style='height:45rpx;width:100%;'></view>
 <view class='dingwei'>
-<text>猜你想找</text>
+<text>热门城市</text>
 </view>
 <view class='city'>
-<view class='xz' bindtap='search_weather'>北京市</view>
-<view class='xz' bindtap='search_weather'>承德市</view>
-<view class='xz' bindtap='search_weather'>上海市</view>
-<view class='xz' bindtap='search_weather'>南京市</view>
-<view class='xz' bindtap='search_weather'>杭州市</view>
-<view class='xz' bindtap='search_weather'>天津市</view>
-<view class='xz' bindtap='search_weather'>广州市</view>
-<view class='xz' bindtap='search_weather'>深圳市</view>
-<view class='xz' bindtap='search_weather'>武汉市</view>
+<view class='xz' data-name='北京市' bindtap='search_weather'>北京市</view>
+<view class='xz' data-name='承德市' bindtap='search_weather'>承德市</view>
+<view class='xz' data-name='上海市' bindtap='search_weather'>上海市</view>
+<view class='xz' data-name='南京市' bindtap='search_weather'>南京市</view>
+<view class='xz' data-name='杭州市' bindtap='search_weather'>杭州市</view>
+<view class='xz' data-name='天津市' bindtap='search_weather'>天津市</view>
+<view class='xz' data-name='广州市' bindtap='search_weather'>广州市</view>
+<view class='xz' data-name='深圳市' bindtap='search_weather'>深圳市</view>
+<view class='xz' data-name='武汉市' bindtap='search_weather'>武汉市</view>
 </view>

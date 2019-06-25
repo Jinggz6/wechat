@@ -1,5 +1,5 @@
 // pages/index/index.js
-const app = getApp()
+const app = getApp();
 Page({
 
   /**
@@ -38,9 +38,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.weiZhi();
+    this.weiZhi(options);
     this.getUserOpenId();
-    console.log(options);
+    // console.log(options);
   },
 
   /**
@@ -76,7 +76,8 @@ Page({
    */
   onPullDownRefresh: function() {
     var that = this;
-    that.weiZhi();
+    var options = {};
+    that.weiZhi(options);
     that.getUserOpenId();
     // 小程序提供的api，通知页面停止下拉刷新效果
     wx.stopPullDownRefresh();
@@ -121,27 +122,36 @@ Page({
   },
 
   //获取用户位置（经纬度）
-  weiZhi: function() {
+  weiZhi: function(options) {
+    var truedata = JSON.stringify(options);
     var that = this;
-    wx.getLocation({
-      type: 'wgs84',
-      success(res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        wx.setStorageSync("latitude", latitude);
-        wx.setStorageSync("longitude", longitude);
-        // console.log(latitude);
-        // console.log(longitude);
-        that.getUserCity(latitude, longitude);
-      },
-      fail() {
-        wx.showToast({
-          title: '请在【我的】页面授权位置信息并下拉刷新',
-          icon: 'none',
-          duration: 5000
-        });
-      },
-    })
+    if (truedata == '{}') {
+      wx.getLocation({
+        type: 'wgs84',
+        success(res) {
+          var latitude = res.latitude
+          var longitude = res.longitude
+          wx.setStorageSync("latitude", latitude);
+          wx.setStorageSync("longitude", longitude);
+          // console.log(latitude);
+          // console.log(longitude);
+          that.getUserCity(latitude, longitude);
+        },
+        fail() {
+          wx.showToast({
+            title: '请在【我的】页面授权位置信息并下拉刷新',
+            icon: 'none',
+            duration: 5000
+          });
+        },
+      })
+    } else {
+      var latitude = options.lat;
+      var longitude = options.lng;
+      wx.setStorageSync("latitude", latitude);
+      wx.setStorageSync("longitude", longitude);
+      that.getUserCity(latitude, longitude);
+    }
   },
 
   //获取用户地理位置（城市）
