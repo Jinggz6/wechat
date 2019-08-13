@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    icon: '',
+    name:'1',
     province: '',
     location_city: '',
     get_time: '',
@@ -32,6 +34,8 @@ Page({
     wind_spd: '',
     future: [],
     lifeindex: [],
+    showModal: true, // 显示modal弹窗
+    single: true// true 只显示一个按钮，如果想显示两个改为false即可
   },
 
   /**
@@ -99,6 +103,7 @@ Page({
 
   //用户登录
   getUserOpenId: function(e) {
+    var that = this;
     wx.login({
       success: res => {
         // console.log(res);
@@ -115,11 +120,41 @@ Page({
           success(res) {
             // console.log(res.data.data)
             wx.setStorageSync("user_id", res.data.data);
+            if (res.data.code == 1) {
+              var userid = res.data.data;
+              that.getUserInfos(userid);
+            }
           }
         })
       }
     })
   },
+
+  getUserInfos: function(userid) {
+    var userid = userid;
+    var page = this;
+    wx.request({
+      method: "GET",
+      url: app.globalData.apiUrl + '/GainUserInfo', // 仅为示例，并非真实的接口地址
+      data: {
+        user_id: userid
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        // console.log(res.data)
+        // 判断是否成功 code=1 或 0
+        if (res.data.code == 1) {
+          page.setData({
+            icon: res.data.data.usericon,
+            name: res.data.data.username,
+          });
+        }
+      }
+    })
+  },
+
 
   //获取用户位置（经纬度）
   weiZhi: function(options) {
@@ -308,4 +343,40 @@ Page({
       }
     });
   },
+
+  // 点击取消按钮的回调函数
+  modalCancel(e) {
+    // 这里面处理点击取消按钮业务逻辑
+    console.log('点击了取消');
+  },
+  // 点击确定按钮的回调函数
+  modalConfirm(e) {
+    // 这里面处理点击确定按钮业务逻辑
+    // console.log(e.detail.detail.userInfo);
+    wx.showLoading({
+      title: '加载中...',
+      mask: true,
+    });
+    var page = this;
+    if (e.detail.detail.userInfo) {
+      var user_id = wx.getStorageSync('user_id');
+      wx.request({
+        method: "POST",
+        url: app.globalData.apiUrl + '/AddUserInfo', // 仅为示例，并非真实的接口地址
+        data: {
+          userid: user_id,
+          name: e.detail.detail.userInfo.nickName,
+          icon: e.detail.detail.userInfo.avatarUrl,
+          area: e.detail.detail.userInfo.province + e.detail.detail.userInfo.city,
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(res) {
+          console.log(res.data)
+          wx.hideLoading();
+        }
+      })
+    }
+  }
 })

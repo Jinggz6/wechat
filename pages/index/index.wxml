@@ -1,4 +1,18 @@
 <!--pages/myself/myself.wxml-->
+<!-- 弹窗组件 -->
+ <view wx:if="{{name == []}}">
+  <!-- modal弹窗-->
+  <modalView show="{{showModal}}" bindcancel="modalCancel" bindconfirm='modalConfirm' single='{{single}}'>
+    <view class='modal-content'>
+      <scroll-view scroll-y class='main-content'>
+        <view>登录并授权</view>
+        <view>申请获取以下权限获得你的公开信息</view>
+        <view>（昵称、头像）</view>
+      </scroll-view>
+    </view>
+  </modalView>
+</view>
+
 <!-- 页头 -->
 <view class='yetou'>
   <view class='heads'>
