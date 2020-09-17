@@ -64,7 +64,7 @@
     </view>
   </view>
 </view>
-
+<ad unit-id="adunit-479c7da5341057bf"></ad>
 <!-- boby -->
 <view class='bobys'>
   <!-- 空白 -->
@@ -186,6 +186,7 @@
 <!-- 灰色 -->
 <view class='graycolor'></view>
 <!-- 页尾 -->
+<ad unit-id="adunit-479c7da5341057bf"></ad>
 <view class='yewei'>
 <text>-- 数据来源于和风天气 --</text>
 </view>
