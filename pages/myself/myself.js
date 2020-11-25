@@ -84,6 +84,22 @@ Page({
         console.log('确定')
       }
     })
+  },
+
+  takeMessage: function() {
+    wx.requestSubscribeMessage({
+      tmplIds: ['gR8nxCU02xtqVoVp0I0IK0-M6b49n-oSFDSvQ64qU_4'], // 此处可填写多个模板 ID，但低版本微信不兼容只能授权一个
+      success (res) {
+      //  console.log(res)
+        if (res['gR8nxCU02xtqVoVp0I0IK0-M6b49n-oSFDSvQ64qU_4'] === "accept") {
+          // console.log(ok)
+          wx.showToast({
+            title: '订阅成功！',
+            duration: 1000,
+          })
+        }
+      }
+     })
   }
 
 })

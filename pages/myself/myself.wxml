@@ -58,6 +58,17 @@
   </view>
 </view>
 
+<!-- 订阅天气 -->
+<view class='shenti'>
+  <view class='hezi'>
+    <image class='my' src='../../image/dingyue.png'></image>
+    <image class='webs' src='../../image/right.png'></image>
+    <view class='jianshe1'>
+      <button class='style-butt' style='font-size:16px;background:#F8F8F8;' bindtap='takeMessage'>订阅天气</button>
+    </view>
+  </view>
+</view>
+
 <!-- 页尾 -->
 <view class='yewei'>
   <view class='shangxian'>
