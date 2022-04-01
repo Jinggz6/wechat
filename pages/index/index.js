@@ -6,8 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    img: 'https://www.wechat96.com/jd.jpg',
     icon: '',
-    name:'1',
+    name: '1',
     province: '',
     location_city: '',
     get_time: '',
@@ -41,7 +42,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.weiZhi(options);
     this.getUserOpenId();
     // console.log(options);
@@ -50,35 +51,35 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     var that = this;
     var options = {};
     that.weiZhi(options);
@@ -90,19 +91,19 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
   //用户登录
-  getUserOpenId: function(e) {
+  getUserOpenId: function (e) {
     var that = this;
     wx.login({
       success: res => {
@@ -130,7 +131,7 @@ Page({
     })
   },
 
-  getUserInfos: function(userid) {
+  getUserInfos: function (userid) {
     var userid = userid;
     var page = this;
     wx.request({
@@ -157,7 +158,7 @@ Page({
 
 
   //获取用户位置（经纬度）
-  weiZhi: function(options) {
+  weiZhi: function (options) {
     var truedata = JSON.stringify(options);
     var that = this;
     if (truedata == '{}') {
@@ -190,7 +191,7 @@ Page({
   },
 
   //获取用户地理位置（城市）
-  getUserCity: function(latitude, longitude) {
+  getUserCity: function (latitude, longitude) {
     wx.showLoading({
       title: '加载中...',
       mask: true,
@@ -231,7 +232,7 @@ Page({
   },
 
   //获取用户天气集合预报
-  getWeatherList: function(latitude, longitude) {
+  getWeatherList: function (latitude, longitude) {
     var that = this;
     // var latitudes = wx.getStorageSync('latitude');
     // var longitudes = wx.getStorageSync('longitude');
@@ -287,14 +288,14 @@ Page({
   },
 
   // 搜索页面
-  skip_page: function(e) {
+  skip_page: function (e) {
     wx.switchTab({
       url: '/pages/search/search',
     })
   },
 
   // 点击生活指数
-  click_button: function(e) {
+  click_button: function (e) {
     // console.log(e.currentTarget.dataset.name);
     wx.showModal({
       title: '温馨提示',
@@ -306,7 +307,7 @@ Page({
   },
 
   // 点击分享图片
-  share_pic: function() {
+  share_pic: function () {
     wx.showLoading({
       title: '加载中...',
       mask: true,
@@ -378,5 +379,24 @@ Page({
         }
       })
     }
+  },
+  //跳转小程序
+  tongsouhaowu: function (res) {
+    wx.navigateToMiniProgram({
+      appId: 'wxe769f52b6b8c5b36', // 要跳转的小程序的appid
+      path: 'pages/index/index?siyuId=17&type=2&unid=xianzhi_GylVa4&wareId=001', // 跳转的目标页面，携带的参数可以在另外一个小程序的onLoad中通过options.xxx进行接收，就是调试的时候不好调试
+      // path: `pages/index/index?p=107624054716`, // 跳转的目标页面
+      envVersion: 'release',
+      success(res) {
+        // 打开成功  
+      },
+      fail() {
+        wx.showToast({
+          title: '请重试~',
+          icon: 'none',
+          duration: 5000
+        });
+      }
+    })
   }
 })

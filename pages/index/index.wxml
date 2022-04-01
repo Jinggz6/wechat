@@ -65,6 +65,8 @@
   </view>
 </view>
 <ad unit-id="adunit-479c7da5341057bf"></ad>
+<!-- 跳转京东 -->
+<image style="width: 375px; height: 130px;" bindtap='tongsouhaowu' src="{{img}}"></image>
 <!-- boby -->
 <view class='bobys'>
   <!-- 空白 -->
