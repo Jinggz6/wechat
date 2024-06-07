@@ -5,6 +5,9 @@
     "pages/myself/myself",
     "pages/search/search"
   ],
+  "requiredPrivateInfos":[
+    "getLocation"
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

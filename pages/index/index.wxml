@@ -64,7 +64,8 @@
     </view>
   </view>
 </view>
-<ad unit-id="adunit-479c7da5341057bf"></ad>
+<!-- <ad unit-id="adunit-479c7da5341057bf"></ad> -->
+<ad unit-id="adunit-6d257a22d296a4ce" ad-type="video" ad-theme="white"></ad>
 <!-- 跳转京东 -->
 <image style="width: 375px; height: 130px;" bindtap='tongsouhaowu' src="{{img}}"></image>
 <!-- boby -->
